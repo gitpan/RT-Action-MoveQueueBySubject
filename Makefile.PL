@@ -1,12 +1,8 @@
 use inc::Module::Install;
 
-
 RTx 'RT-Action-MoveQueueBySubject';
-all_from 'lib/RT/Action/MoveQueueBySubject.pm';
-readme_from 'lib/RT/Action/MoveQueueBySubject.pm';
-license  'gplv2';
+
+repository('https://github.com/bestpractical/rt-action-movequeuebysubject');
 
 sign;
-manifest_skip;
-auto_manifest;
 WriteAll;

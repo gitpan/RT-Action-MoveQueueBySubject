@@ -3,40 +3,45 @@ use warnings;
 package RT::Action::MoveQueueBySubject;
 use base qw(RT::Action);
 
-our $VERSION = '0.01';
+our $VERSION = '1.00';
 
 =head1 NAME
 
 RT-Action-MoveQueueBySubject - Move Tickets between queues based on Subject
 
-=head1 INSTALLATION 
+=head1 INSTALLATION
 
 =over
 
-=item perl Makefile.PL
+=item C<perl Makefile.PL>
 
-=item make
+=item C<make>
 
-=item make install
+=item C<make install>
 
 May need root permissions
 
-=item make initdb
+=item C<make initdb>
 
-Only do this during the intial install.  Running it twice will result
-in duplicate Scrip Actions.
+Only run this the first time you install this module.
 
-=item Edit your /opt/rt4/etc/RT_SiteConfig.pm
+If you run this twice, you may end up with duplicate data
+in your database.
 
-Add this line:
+If you are upgrading this module, check for upgrading instructions
+in case changes need to be made to your database.
+
+=item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
+
+If you are using RT 4.2 or greater, add this line:
+
+    Plugin('RT::Action::MoveQueueBySubject');
+
+For RT 4.0, add this line:
 
     Set(@Plugins, qw(RT::Action::MoveQueueBySubject));
 
 or add C<RT::Action::MoveQueueBySubject> to your existing C<@Plugins> line.
-
-=item Clear your mason cache
-
-    rm -rf /opt/rt4/var/mason_data/obj
 
 =item Restart your webserver
 
@@ -68,18 +73,21 @@ Create is typical), this Action and a Blank Template.
 
 =head1 AUTHOR
 
-Kevin Falcone <falcone@bestpractical.com>
+Best Practical Solutions, LLC E<lt>modules@bestpractical.comE<gt>
 
 =head1 BUGS
 
-All bugs should be reported via
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Action-MoveQueueBySubject>
-or L<bug-RT-Action-MoveQueueBySubject@rt.cpan.org>.
+All bugs should be reported via email to
 
+    L<bug-RT-Action-MoveQueueBySubject@rt.cpan.org|mailto:bug-RT-Action-MoveQueueBySubject@rt.cpan.org>
 
-=head1 LICENCE AND COPYRIGHT
+or via the web at
 
-This software is Copyright (c) 2011 by Best Practical Solutions.
+    L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Action-MoveQueueBySubject>.
+
+=head1 LICENSE AND COPYRIGHT
+
+This software is Copyright (c) 2011-2014 by Best Practical Solutions
 
 This is free software, licensed under:
 
